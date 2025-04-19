@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras - Godness Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background: #1a1a1a;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .main-wrapper {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .header h1 {
+      background: linear-gradient(45deg, #007bff, #00e1ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    
+    .category-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .category {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 40px rgba(0, 123, 255, 0.2);
+    }
+    
+    .category h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: #00e1ff;
+      font-size: 1.5rem;
+    }
+    
+    .category h2 i {
+      font-size: 1.8rem;
+      width: 30px;
+      text-align: center;
+    }
+    
+    .category ul {
+      list-style: none;
+    }
+    
+    .category li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .category li:last-child {
+      border-bottom: none;
+    }
+    
+    .footer {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .footer-text {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .category-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+    <header class="header">
+      <h1>LISTA DE COMPRAS</h1>
+      <p>Organizado por categorías para tu nuevo hogar</p>
+    </header>
+    
+    <div class="category-container">
+      <!-- Cocina y Electrodomésticos -->
+      <div class="category">
+        <h2><i class="fas fa-microwave"></i> Cocina y Electrodomésticos</h2>
+        <ul>
+          <li>Horno</li>
+          <li>Microondas</li>
+          <li>Batidora</li>
+          <li>Refrigeradora</li>
+          <li>Waflera</li>
+          <li>Licuadora</li>
+          <li>Freidora de aire</li>
+          <li>Tostadora</li>
+          <li>Dispensador de agua</li>
+          <li>Balanza normal</li>
+          <li>Balanza para postres</li>
+          <li>Dispensadores</li>
+        </ul>
+      </div>
+      
+      <!-- Utensilios de Cocina -->
+      <div class="category">
+        <h2><i class="fas fa-utensils"></i> Utensilios de Cocina</h2>
+        <ul>
+          <li>Platos</li>
+          <li>Cucharas</li>
+          <li>Tenedores</li>
+          <li>Coladores</li>
+          <li>Ollas</li>
+          <li>Sartenes</li>
+          <li>Escurridor</li>
+          <li>Cuchillos</li>
+          <li>Cucharones</li>
+          <li>Tazas</li>
+          <li>Dulceras</li>
+          <li>Vasos</li>
+          <li>Espátulas</li>
+          <li>Abrelatas</li>
+          <li>Abridor de lata</li>
+          <li>Repostero para cocina</li>
+          <li>Verdulero</li>
+          <li>Termo</li>
+        </ul>
+      </div>
+      
+      <!-- Muebles -->
+      <div class="category">
+        <h2><i class="fas fa-couch"></i> Muebles</h2>
+        <ul>
+          <li>Cama</li>
+          <li>Mesa</li>
+          <li>2 Escritorios</li>
+          <li>2 Closets</li>
+          <li>Vanity</li>
+          <li>Sillones</li>
+          <li>Comedor</li>
+          <li>Mesa de centro</li>
+          <li>Zapatera</li>
+          <li>Velador</li>
+          <li>Sillas gamer</li>
+        </ul>
+      </div>
+      
+      <!-- Ropa de Hogar -->
+      <div class="category">
+        <h2><i class="fas fa-bed"></i> Ropa de Hogar</h2>
+        <ul>
+          <li>Colchón</li>
+          <li>Frazadas</li>
+          <li>Sábanas</li>
+          <li>Almohadas</li>
+          <li>Funda para almohada</li>
+          <li>Cortinas</li>
+          <li>Manteles</li>
+          <li>Toallas</li>
+          <li>Cesto de ropa</li>
+        </ul>
+      </div>
+      
+      <!-- Electrónica -->
+      <div class="category">
+        <h2><i class="fas fa-tv"></i> Electrónica</h2>
+        <ul>
+          <li>Televisores de 75"</li>
+          <li>Parlante</li>
+          <li>Proyector portátil</li>
+          <li>Teléfono fijo</li>
+          <li>Set de accesorios de cómputo</li>
+          <li>Tira LED</li>
+          <li>Cargadores portátiles</li>
+          <li>UPS</li>
+          <li>Foco recargable</li>
+          <li>Ventilador</li>
+        </ul>
+      </div>
+      
+      <!-- Limpieza y Organización -->
+      <div class="category">
+        <h2><i class="fas fa-broom"></i> Limpieza y Organización</h2>
+        <ul>
+          <li>Escoba</li>
+          <li>Recogedor</li>
+          <li>Trapeador</li>
+          <li>Aspiradora inteligente</li>
+          <li>Organizador para cajones</li>
+          <li>Cajas para almacenamiento</li>
+          <li>Ganchos</li>
+          <li>Repostero para baño</li>
+        </ul>
+      </div>
+      
+      <!-- Artículos Personales -->
+      <div class="category">
+        <h2><i class="fas fa-tshirt"></i> Artículos Personales</h2>
+        <ul>
+          <li>Ropa</li>
+          <li>Zapatos</li>
+          <li>Ropa interior y medias</li>
+          <li>Maletas y mochilas</li>
+          <li>Colonias</li>
+        </ul>
+      </div>
+      
+      <!-- Mascotas -->
+      <div class="category">
+        <h2><i class="fas fa-paw"></i> Mascotas</h2>
+        <ul>
+          <li>Plato para perro</li>
+          <li>Toallas para perros</li>
+          <li>Casa para perros</li>
+          <li>Ropa y zapatos para perros</li>
+          <li>Correas a elección</li>
+          <li>Máquina para cortar pelo para perros</li>
+          <li>Costal de comida para perros</li>
+        </ul>
+      </div>
+      
+      <!-- Herramientas y Utilidades -->
+      <div class="category">
+        <h2><i class="fas fa-tools"></i> Herramientas y Utilidades</h2>
+        <ul>
+          <li>Caja de herramientas</li>
+          <li>Herramientas</li>
+          <li>Herramientas para jardín</li>
+          <li>Plancha a vapor</li>
+          <li>Extensiones</li>
+          <li>Adaptadores para enchufe</li>
+          <li>Encendedor recargable</li>
+        </ul>
+      </div>
+      
+      <!-- Decoración -->
+      <div class="category">
+        <h2><i class="fas fa-paint-brush"></i> Decoración</h2>
+        <ul>
+          <li>Lámpara</li>
+          <li>Espejo grande</li>
+          <li>Reloj</li>
+          <li>Despertador</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <p class="footer-text">GODNESS PROJECTS © MADE WITH 💜 BY DARKGOD14 | 2025 ☢ ALL RIGHTS RESERVED</p>
+  </footer>
+</body>
+</html>
