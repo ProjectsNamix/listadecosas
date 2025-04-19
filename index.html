@@ -1,498 +1,599 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Compras</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      background: #1a1a1a;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    
-    .main-wrapper {
-      flex: 1;
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .header h1 {
-      background: linear-gradient(45deg, #007bff, #00e1ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-    
-    .category-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .category {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .category:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 40px rgba(0, 123, 255, 0.2);
-    }
-    
-    .category h2 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      color: #00e1ff;
-      font-size: 1.5rem;
-    }
-    
-    .category h2 i {
-      font-size: 1.8rem;
-      width: 30px;
-      text-align: center;
-    }
-    
-    .category ul {
-      list-style: none;
-    }
-    
-    .category li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    
-    .category li:last-child {
-      border-bottom: none;
-    }
-    
-    .category li.checked {
-      text-decoration: line-through;
-      color: rgba(255, 255, 255, 0.5);
-    }
-    
-    .checkbox {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 18px;
-      height: 18px;
-      border: 2px solid #00e1ff;
-      border-radius: 4px;
-      margin-right: 10px;
-      cursor: pointer;
-      position: relative;
-      background: transparent;
-      flex-shrink: 0;
-    }
-    
-    .checkbox:checked {
-      background: #00e1ff;
-    }
-    
-    .checkbox:checked::after {
-      content: '✓';
-      position: absolute;
-      color: #1a1a1a;
-      font-size: 14px;
-      font-weight: bold;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .item-text {
-      flex: 1;
-    }
-    
-    .progress-container {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      height: 10px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      overflow: hidden;
-    }
-    
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(45deg, #007bff, #00e1ff);
-      border-radius: 10px;
-      transition: width 0.3s ease;
-    }
-    
-    .category-stats {
-      font-size: 0.8rem;
-      text-align: right;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 10px;
-    }
-    
-    @media (max-width: 768px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Compras</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #1a1a1a;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .main-wrapper {
+        flex: 1;
+        padding: 2rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .header h1 {
+        background: linear-gradient(45deg, #007bff, #00e1ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
       .category-container {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="main-wrapper">
-    <header class="header">
-      <h1>LISTA DE COMPRAS</h1>
-    </header>
-    
-    <div class="category-container" id="category-container">
+
+      .category {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 40px rgba(0, 123, 255, 0.2);
+      }
+
+      .category h2 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        color: #00e1ff;
+        font-size: 1.5rem;
+      }
+
+      .category h2 i {
+        font-size: 1.8rem;
+        width: 30px;
+        text-align: center;
+      }
+
+      .category ul {
+        list-style: none;
+      }
+
+      .category li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .category li:last-child {
+        border-bottom: none;
+      }
+
+      .category li.checked {
+        text-decoration: line-through;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #00e1ff;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+        position: relative;
+        background: transparent;
+        flex-shrink: 0;
+      }
+
+      .checkbox:checked {
+        background: #00e1ff;
+      }
+
+      .checkbox:checked::after {
+        content: "✓";
+        position: absolute;
+        color: #1a1a1a;
+        font-size: 14px;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .item-text {
+        flex: 1;
+      }
+
+      .progress-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        height: 10px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(45deg, #007bff, #00e1ff);
+        border-radius: 10px;
+        transition: width 0.3s ease;
+      }
+
+      .category-stats {
+        font-size: 0.8rem;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .category-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <header class="header">
+        <h1>LISTA DE COMPRAS</h1>
+      </header>
+
+      <div class="category-container" id="category-container"></div>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const categoriesData = [
-        {
-          id: "cocina",
-          name: "Cocina y Electrodomésticos",
-          icon: "fas fa-blender",
-          items: [
-            "Horno", "Microondas", "Batidora", "Refrigeradora", "Waflera", 
-            "Licuadora", "Freidora de aire", "Tostadora", "Dispensador de agua", 
-            "Balanza normal", "Balanza para postres", "Dispensadores", 
-            "Maquina para donas", "Olla arrocera", "Jarra hervidora", 
-            "Lavaseca", "Sanguchera", "Terma para baño", "Extractor", 
-            "Cafetera", "Batidora de mano", "Caja china", "Parrilla", 
-            "Congeladora", "Refrigeradora chica"
-          ]
-        },
-        {
-          id: "utensilios",
-          name: "Utensilios de Cocina",
-          icon: "fas fa-utensils",
-          items: [
-            "Platos", "Cucharas", "Tenedores", "Coladores", "Ollas", 
-            "Olla a presion", "Sartenes", "Escurridor", "Cuchillos", 
-            "Cucharones", "Tazas", "Dulceras", "Vasos", "Espátulas", 
-            "Abrelatas", "Repostero para cocina", "Verdulero", "Termo", 
-            "Cooler", "Toopers", "Fuentes", "Quequeras", 
-            "Exprimidor de limones", "Exprimidor de naranjas"
-          ]
-        },
-        {
-          id: "muebles",
-          name: "Muebles",
-          icon: "fas fa-couch",
-          items: [
-            "Cama", "Mesa", "2 Escritorios", "2 Closets", "Vanity", 
-            "Sillones", "Comedor", "Mesa de centro", "Zapatera", 
-            "Velador", "Sillas gamer", "Mueble para tv"
-          ]
-        },
-        {
-          id: "ropa-hogar",
-          name: "Ropa de Hogar",
-          icon: "fas fa-bed",
-          items: [
-            "Colchón", "Frazadas", "Sábanas", "Almohadas", 
-            "Funda para almohada", "Cortinas", "Manteles", 
-            "Toallas", "Cesto de ropa"
-          ]
-        },
-        {
-          id: "electronica",
-          name: "Electrónica",
-          icon: "fas fa-tv",
-          items: [
-            "Televisores de 75\"", "Parlante", "Proyector portátil", 
-            "Teléfono fijo", "Set de accesorios de cómputo", 
-            "Tira LED", "Cargadores portátiles", "UPS", 
-            "Foco recargable", "Impresora", "Ventilador"
-          ]
-        },
-        {
-          id: "limpieza",
-          name: "Limpieza y Organización",
-          icon: "fas fa-broom",
-          items: [
-            "Escoba", "Recogedor", "Trapeador", "Aspiradora inteligente", 
-            "Organizador para cajones", "Cajas para almacenamiento", 
-            "Ganchos", "Repostero para baño"
-          ]
-        },
-        {
-          id: "personal",
-          name: "Artículos Personales",
-          icon: "fas fa-tshirt",
-          items: [
-            "Ropa", "Zapatos", "Ropa interior y medias", 
-            "Maletas y mochilas", "Colonias", "Plancha de cabello", 
-            "Secadora de cabello", "Bicicleta"
-          ]
-        },
-        {
-          id: "mascotas",
-          name: "Mascotas",
-          icon: "fas fa-paw",
-          items: [
-            "Plato para perro", "Toallas para perros", "Casa para perros", 
-            "Ropa y zapatos para perros", "Correas a elección", 
-            "Máquina para cortar pelo para perros", "Costal de comida para perros"
-          ]
-        },
-        {
-          id: "herramientas",
-          name: "Herramientas y Utilidades",
-          icon: "fas fa-tools",
-          items: [
-            "Caja de herramientas", "Herramientas", "Herramientas para jardín", 
-            "Plancha a vapor", "Extensiones", "Adaptadores para enchufe", 
-            "Encendedor recargable"
-          ]
-        },
-        {
-          id: "decoracion",
-          name: "Decoración",
-          icon: "fas fa-paint-brush",
-          items: [
-            "Lámpara", "Espejo grande", "Reloj", "Despertador"
-          ]
-        }
-      ];
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const categoriesData = [
+          {
+            id: "cocina",
+            name: "Cocina y Electrodomésticos",
+            icon: "fas fa-blender",
+            items: [
+              "Horno",
+              "Microondas",
+              "Batidora",
+              "Refrigeradora",
+              "Waflera",
+              "Licuadora",
+              "Freidora de aire",
+              "Tostadora",
+              "Dispensador de agua",
+              "Balanza normal",
+              "Balanza para postres",
+              "Dispensadores",
+              "Maquina para donas",
+              "Olla arrocera",
+              "Jarra hervidora",
+              "Lavaseca",
+              "Sanguchera",
+              "Terma para baño",
+              "Extractor",
+              "Cafetera",
+              "Batidora de mano",
+              "Caja china",
+              "Parrilla",
+              "Congeladora",
+              "Refrigeradora chica",
+            ],
+          },
+          {
+            id: "utensilios",
+            name: "Utensilios de Cocina",
+            icon: "fas fa-utensils",
+            items: [
+              "Platos",
+              "Cucharas",
+              "Tenedores",
+              "Coladores",
+              "Ollas",
+              "Olla a presion",
+              "Sartenes",
+              "Escurridor",
+              "Cuchillos",
+              "Cucharones",
+              "Tazas",
+              "Dulceras",
+              "Vasos",
+              "Espátulas",
+              "Abrelatas",
+              "Repostero para cocina",
+              "Verdulero",
+              "Termo",
+              "Cooler",
+              "Toopers",
+              "Fuentes",
+              "Quequeras",
+              "Exprimidor de limones",
+              "Exprimidor de naranjas",
+            ],
+          },
+          {
+            id: "muebles",
+            name: "Muebles",
+            icon: "fas fa-couch",
+            items: [
+              "Cama",
+              "Mesa",
+              "2 Escritorios",
+              "2 Closets",
+              "Vanity",
+              "Sillones",
+              "Comedor",
+              "Mesa de centro",
+              "Zapatera",
+              "Velador",
+              "Sillas gamer",
+              "Mueble para tv",
+            ],
+          },
+          {
+            id: "ropa-hogar",
+            name: "Ropa de Hogar",
+            icon: "fas fa-bed",
+            items: [
+              "Colchón",
+              "Frazadas",
+              "Sábanas",
+              "Almohadas",
+              "Funda para almohada",
+              "Cortinas",
+              "Manteles",
+              "Toallas",
+              "Cesto de ropa",
+            ],
+          },
+          {
+            id: "electronica",
+            name: "Electrónica",
+            icon: "fas fa-tv",
+            items: [
+              'Televisores de 75"',
+              "Parlante",
+              "Proyector portátil",
+              "Teléfono fijo",
+              "Set de accesorios de cómputo",
+              "Tira LED",
+              "Cargadores portátiles",
+              "UPS",
+              "Foco recargable",
+              "Impresora",
+              "Ventilador",
+            ],
+          },
+          {
+            id: "limpieza",
+            name: "Limpieza y Organización",
+            icon: "fas fa-broom",
+            items: [
+              "Escoba",
+              "Recogedor",
+              "Trapeador",
+              "Aspiradora inteligente",
+              "Organizador para cajones",
+              "Cajas para almacenamiento",
+              "Ganchos",
+              "Repostero para baño",
+            ],
+          },
+          {
+            id: "personal",
+            name: "Artículos Personales",
+            icon: "fas fa-tshirt",
+            items: [
+              "Ropa",
+              "Zapatos",
+              "Ropa interior y medias",
+              "Maletas y mochilas",
+              "Colonias",
+              "Plancha de cabello",
+              "Secadora de cabello",
+              "Bicicleta",
+            ],
+          },
+          {
+            id: "mascotas",
+            name: "Mascotas",
+            icon: "fas fa-paw",
+            items: [
+              "Plato para perro",
+              "Toallas para perros",
+              "Casa para perros",
+              "Ropa y zapatos para perros",
+              "Correas a elección",
+              "Máquina para cortar pelo para perros",
+              "Costal de comida para perros",
+            ],
+          },
+          {
+            id: "herramientas",
+            name: "Herramientas y Utilidades",
+            icon: "fas fa-tools",
+            items: [
+              "Caja de herramientas",
+              "Herramientas",
+              "Herramientas para jardín",
+              "Plancha a vapor",
+              "Extensiones",
+              "Adaptadores para enchufe",
+              "Encendedor recargable",
+            ],
+          },
+          {
+            id: "decoracion",
+            name: "Decoración",
+            icon: "fas fa-paint-brush",
+            items: ["Lámpara", "Espejo grande", "Reloj", "Despertador"],
+          },
+        ];
 
-      const appState = {
-        categories: {},
-        init() {
-          categoriesData.forEach(category => {
-            this.categories[category.id] = {
-              items: category.items.map(() => false)
-            };
-          });
-          
-          this.loadFromStorage();
-        },
-        loadFromStorage() {
-          Object.keys(this.categories).forEach(categoryId => {
-            const savedItems = JSON.parse(
-              localStorage.getItem(`checkedItems-${categoryId}`) || "[]"
-            );
-            
-            savedItems.forEach(index => {
-              if (index < this.categories[categoryId].items.length) {
-                this.categories[categoryId].items[index] = true;
-              }
+        const appState = {
+          categories: {},
+          init() {
+            categoriesData.forEach((category) => {
+              this.categories[category.id] = {
+                items: category.items.map(() => false),
+              };
             });
-          });
-        },
-        saveToStorage() {
-          Object.keys(this.categories).forEach(categoryId => {
-            const checkedIndexes = this.categories[categoryId].items
-              .map((isChecked, index) => isChecked ? index : null)
-              .filter(index => index !== null);
-            
-            localStorage.setItem(
-              `checkedItems-${categoryId}`,
-              JSON.stringify(checkedIndexes)
-            );
-          });
-        },
-        toggleItem(categoryId, index) {
-          if (this.categories[categoryId] && 
-              index < this.categories[categoryId].items.length) {
-            this.categories[categoryId].items[index] = !this.categories[categoryId].items[index];
-            this.saveToStorage();
-            return true;
-          }
-          return false;
-        },
-        getStats(categoryId) {
-          if (!this.categories[categoryId]) return { checked: 0, total: 0, percent: 0 };
-          
-          const items = this.categories[categoryId].items;
-          const checked = items.filter(item => item).length;
-          const total = items.length;
-          const percent = total > 0 ? (checked / total) * 100 : 0;
-          
-          return { checked, total, percent };
-        }
-      };
-    
-      const uiController = {
-        init() {
-          this.renderCategories();
-          this.setupEventListeners();
-        },
-        renderCategories() {
-          const container = document.getElementById('category-container');
-          container.innerHTML = '';
-          
-          categoriesData.forEach(category => {
-            const categoryEl = this.createCategoryElement(category);
-            container.appendChild(categoryEl);
-          });
-        },
-        createCategoryElement(category) {
-          const { id, name, icon, items } = category;
-          const stats = appState.getStats(id);
-          
-          const categoryEl = document.createElement('div');
-          categoryEl.className = 'category';
-          categoryEl.setAttribute('data-category', id);
-          
-          const headerEl = document.createElement('h2');
-          headerEl.innerHTML = `<i class="${icon}"></i> ${name}`;
-          
-          const statsEl = document.createElement('div');
-          statsEl.className = 'category-stats';
-          statsEl.textContent = `${stats.checked}/${stats.total} completados`;
-          
-          const progressContainerEl = document.createElement('div');
-          progressContainerEl.className = 'progress-container';
-          
-          const progressBarEl = document.createElement('div');
-          progressBarEl.className = 'progress-bar';
-          progressBarEl.id = `progress-${id}`;
-          progressBarEl.style.width = `${stats.percent}%`;
-          
-          progressContainerEl.appendChild(progressBarEl);
-          
-          const listEl = document.createElement('ul');
-          
-          items.forEach((item, index) => {
-            const isChecked = appState.categories[id].items[index];
-            
-            const listItem = document.createElement('li');
-            listItem.className = isChecked ? 'checked' : '';
-            listItem.setAttribute('data-index', index);
-            
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.className = 'checkbox';
-            checkbox.checked = isChecked;
-            
-            const itemText = document.createElement('span');
-            itemText.className = 'item-text';
-            itemText.textContent = item;
-            
-            listItem.appendChild(checkbox);
-            listItem.appendChild(itemText);
-            listEl.appendChild(listItem);
-          });
-          
-          categoryEl.appendChild(headerEl);
-          categoryEl.appendChild(statsEl);
-          categoryEl.appendChild(progressContainerEl);
-          categoryEl.appendChild(listEl);
-          
-          return categoryEl;
-        },
-        setupEventListeners() {
-          document.getElementById('category-container').addEventListener('click', (e) => {
-            const listItem = e.target.closest('li');
-            
-            if (!listItem) return;
-            
-            const categoryEl = listItem.closest('.category');
-            const categoryId = categoryEl.getAttribute('data-category');
-            const itemIndex = parseInt(listItem.getAttribute('data-index'), 10);
-            
-            const checkbox = listItem.querySelector('.checkbox');
-            checkbox.checked = !checkbox.checked;
-            
-            if (appState.toggleItem(categoryId, itemIndex)) {
-              listItem.classList.toggle('checked');
-              this.updateCategoryStats(categoryEl, categoryId);
+
+            this.loadFromStorage();
+          },
+          loadFromStorage() {
+            Object.keys(this.categories).forEach((categoryId) => {
+              const savedItems = JSON.parse(
+                localStorage.getItem(`checkedItems-${categoryId}`) || "[]"
+              );
+
+              savedItems.forEach((index) => {
+                if (index < this.categories[categoryId].items.length) {
+                  this.categories[categoryId].items[index] = true;
+                }
+              });
+            });
+          },
+          saveToStorage() {
+            Object.keys(this.categories).forEach((categoryId) => {
+              const checkedIndexes = this.categories[categoryId].items
+                .map((isChecked, index) => (isChecked ? index : null))
+                .filter((index) => index !== null);
+
+              localStorage.setItem(
+                `checkedItems-${categoryId}`,
+                JSON.stringify(checkedIndexes)
+              );
+            });
+          },
+          toggleItem(categoryId, index) {
+            if (
+              this.categories[categoryId] &&
+              index < this.categories[categoryId].items.length
+            ) {
+              this.categories[categoryId].items[index] =
+                !this.categories[categoryId].items[index];
+              this.saveToStorage();
+              return true;
             }
-          });
-        },
-        updateCategoryStats(categoryEl, categoryId) {
-          const stats = appState.getStats(categoryId);
-          
-          const statsEl = categoryEl.querySelector('.category-stats');
-          statsEl.textContent = `${stats.checked}/${stats.total} completados`;
-          
-          const progressBarEl = categoryEl.querySelector('.progress-bar');
-          progressBarEl.style.width = `${stats.percent}%`;
+            return false;
+          },
+          getStats(categoryId) {
+            if (!this.categories[categoryId])
+              return { checked: 0, total: 0, percent: 0 };
+
+            const items = this.categories[categoryId].items;
+            const checked = items.filter((item) => item).length;
+            const total = items.length;
+            const percent = total > 0 ? (checked / total) * 100 : 0;
+
+            return { checked, total, percent };
+          },
+        };
+
+        const uiController = {
+          init() {
+            this.renderCategories();
+            this.setupEventListeners();
+          },
+          renderCategories() {
+            const container = document.getElementById("category-container");
+            container.innerHTML = "";
+
+            categoriesData.forEach((category) => {
+              const categoryEl = this.createCategoryElement(category);
+              container.appendChild(categoryEl);
+            });
+          },
+          createCategoryElement(category) {
+            const { id, name, icon, items } = category;
+            const stats = appState.getStats(id);
+
+            const categoryEl = document.createElement("div");
+            categoryEl.className = "category";
+            categoryEl.setAttribute("data-category", id);
+
+            const headerEl = document.createElement("h2");
+            headerEl.innerHTML = `<i class="${icon}"></i> ${name}`;
+
+            const statsEl = document.createElement("div");
+            statsEl.className = "category-stats";
+            statsEl.textContent = `${stats.checked}/${stats.total} completados`;
+
+            const progressContainerEl = document.createElement("div");
+            progressContainerEl.className = "progress-container";
+
+            const progressBarEl = document.createElement("div");
+            progressBarEl.className = "progress-bar";
+            progressBarEl.id = `progress-${id}`;
+            progressBarEl.style.width = `${stats.percent}%`;
+
+            progressContainerEl.appendChild(progressBarEl);
+
+            const listEl = document.createElement("ul");
+
+            items.forEach((item, index) => {
+              const isChecked = appState.categories[id].items[index];
+
+              const listItem = document.createElement("li");
+              listItem.className = isChecked ? "checked" : "";
+              listItem.setAttribute("data-index", index);
+
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.className = "checkbox";
+              checkbox.checked = isChecked;
+
+              const itemText = document.createElement("span");
+              itemText.className = "item-text";
+              itemText.textContent = item;
+
+              listItem.appendChild(checkbox);
+              listItem.appendChild(itemText);
+              listEl.appendChild(listItem);
+            });
+
+            categoryEl.appendChild(headerEl);
+            categoryEl.appendChild(statsEl);
+            categoryEl.appendChild(progressContainerEl);
+            categoryEl.appendChild(listEl);
+
+            return categoryEl;
+          },
+          setupEventListeners() {
+            document
+              .getElementById("category-container")
+              .addEventListener("click", (e) => {
+                if (e.target.classList.contains("checkbox")) {
+                  const listItem = e.target.closest("li");
+                  const categoryEl = listItem.closest(".category");
+                  const categoryId = categoryEl.getAttribute("data-category");
+                  const itemIndex = parseInt(
+                    listItem.getAttribute("data-index"),
+                    10
+                  );
+
+                  if (appState.toggleItem(categoryId, itemIndex)) {
+                    listItem.classList.toggle("checked");
+                    this.updateCategoryStats(categoryEl, categoryId);
+                  }
+                }
+                else {
+                  const listItem = e.target.closest("li");
+
+                  if (!listItem) return;
+
+                  const categoryEl = listItem.closest(".category");
+                  const categoryId = categoryEl.getAttribute("data-category");
+                  const itemIndex = parseInt(
+                    listItem.getAttribute("data-index"),
+                    10
+                  );
+
+                  const checkbox = listItem.querySelector(".checkbox");
+                  checkbox.checked = !checkbox.checked;
+
+                  if (appState.toggleItem(categoryId, itemIndex)) {
+                    listItem.classList.toggle("checked");
+                    this.updateCategoryStats(categoryEl, categoryId);
+                  }
+                }
+              });
+          },
+          updateCategoryStats(categoryEl, categoryId) {
+            const stats = appState.getStats(categoryId);
+
+            const statsEl = categoryEl.querySelector(".category-stats");
+            statsEl.textContent = `${stats.checked}/${stats.total} completados`;
+
+            const progressBarEl = categoryEl.querySelector(".progress-bar");
+            progressBarEl.style.width = `${stats.percent}%`;
+          },
+        };
+
+        function initApp() {
+          appState.init();
+          uiController.init();
+          setupProtection();
         }
-      };
 
-      function initApp() {
-        appState.init();
-        uiController.init();
-        setupProtection();
-      }
-
-      function setupProtection() {
-        document.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          return false;
-        });
-
-        document.addEventListener("selectstart", function (e) {
-          e.preventDefault();
-          return false;
-        });
-
-        document.addEventListener("dragstart", function (e) {
-          e.preventDefault();
-          return false;
-        });
-
-        document.addEventListener("keydown", function (e) {
-          if (
-            (e.ctrlKey &&
-              (e.keyCode === 67 ||
-                e.keyCode === 85 ||
-                e.keyCode === 73 ||
-                e.keyCode === 83 ||
-                e.keyCode === 80)) ||
-            e.keyCode === 123 ||
-            (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
-            (e.altKey && e.keyCode >= 112 && e.keyCode <= 123)
-          ) {
+        function setupProtection() {
+          document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
             return false;
-          }
-        });
+          });
 
-        document.addEventListener("copy", function (e) {
-          e.preventDefault();
-          return false;
-        });
+          document.addEventListener("selectstart", function (e) {
+            e.preventDefault();
+            return false;
+          });
 
-        document.addEventListener("paste", function (e) {
-          e.preventDefault();
-          return false;
-        });
+          document.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+            return false;
+          });
 
-        const style = document.createElement("style");
-        style.textContent = `
+          document.addEventListener("keydown", function (e) {
+            if (
+              (e.ctrlKey &&
+                (e.keyCode === 67 ||
+                  e.keyCode === 85 ||
+                  e.keyCode === 73 ||
+                  e.keyCode === 83 ||
+                  e.keyCode === 80)) ||
+              e.keyCode === 123 ||
+              (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+              (e.altKey && e.keyCode >= 112 && e.keyCode <= 123)
+            ) {
+              e.preventDefault();
+              return false;
+            }
+          });
+
+          document.addEventListener("copy", function (e) {
+            e.preventDefault();
+            return false;
+          });
+
+          document.addEventListener("paste", function (e) {
+            e.preventDefault();
+            return false;
+          });
+
+          const style = document.createElement("style");
+          style.textContent = `
           * {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -503,11 +604,11 @@
             pointer-events: none;
           }
         `;
-        document.head.appendChild(style);
-      }
+          document.head.appendChild(style);
+        }
 
-      initApp();
-    });
-  </script>
-</body>
+        initApp();
+      });
+    </script>
+  </body>
 </html>
