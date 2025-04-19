@@ -372,75 +372,167 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const categories = [
-        'cocina', 'utensilios', 'muebles', 'ropa-hogar', 
-        'electronica', 'limpieza', 'personal', 'mascotas', 
-        'herramientas', 'decoracion'
+        "cocina",
+        "utensilios",
+        "muebles",
+        "ropa-hogar",
+        "electronica",
+        "limpieza",
+        "personal",
+        "mascotas",
+        "herramientas",
+        "decoracion",
       ];
-      
+
       function loadCheckedItems() {
-        categories.forEach(category => {
-          const savedItems = JSON.parse(localStorage.getItem('checkedItems-' + category) || '[]');
-          const checkboxes = document.querySelectorAll(`.checkbox[data-category="${category}"]`);
-          
+        categories.forEach((category) => {
+          const savedItems = JSON.parse(
+            localStorage.getItem("checkedItems-" + category) || "[]"
+          );
+          const checkboxes = document.querySelectorAll(
+            `.checkbox[data-category="${category}"]`
+          );
+
           checkboxes.forEach((checkbox, index) => {
             if (savedItems.includes(index)) {
               checkbox.checked = true;
-              checkbox.parentElement.classList.add('checked');
+              checkbox.parentElement.classList.add("checked");
             }
           });
-          
+
           updateProgress(category);
         });
       }
-      
+
       function saveCheckedItems(category) {
-        const checkboxes = document.querySelectorAll(`.checkbox[data-category="${category}"]`);
+        const checkboxes = document.querySelectorAll(
+          `.checkbox[data-category="${category}"]`
+        );
         const checkedIndexes = [];
-        
+
         checkboxes.forEach((checkbox, index) => {
           if (checkbox.checked) {
             checkedIndexes.push(index);
           }
         });
-        
-        localStorage.setItem('checkedItems-' + category, JSON.stringify(checkedIndexes));
+
+        localStorage.setItem(
+          "checkedItems-" + category,
+          JSON.stringify(checkedIndexes)
+        );
       }
-      
+
       function updateProgress(category) {
-        const checkboxes = document.querySelectorAll(`.checkbox[data-category="${category}"]`);
+        const checkboxes = document.querySelectorAll(
+          `.checkbox[data-category="${category}"]`
+        );
         const totalItems = checkboxes.length;
         let checkedItems = 0;
-        
-        checkboxes.forEach(checkbox => {
+
+        checkboxes.forEach((checkbox) => {
           if (checkbox.checked) {
             checkedItems++;
           }
         });
-        
-        const progressPercent = totalItems > 0 ? (checkedItems / totalItems) * 100 : 0;
-        document.getElementById(`progress-${category}`).style.width = progressPercent + '%';
+
+        const progressPercent =
+          totalItems > 0 ? (checkedItems / totalItems) * 100 : 0;
+        document.getElementById(`progress-${category}`).style.width =
+          progressPercent + "%";
       }
-      
-      document.querySelectorAll('.checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
+
+      document.querySelectorAll(".checkbox").forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
           const category = this.dataset.category;
           const listItem = this.parentElement;
-          
+
           if (this.checked) {
-            listItem.classList.add('checked');
+            listItem.classList.add("checked");
           } else {
-            listItem.classList.remove('checked');
+            listItem.classList.remove("checked");
           }
-          
+
           saveCheckedItems(category);
           updateProgress(category);
         });
       });
-      
+
       loadCheckedItems();
     });
+
+    function protectContent() {
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (
+          (e.ctrlKey &&
+            (e.keyCode === 67 ||
+              e.keyCode === 85 ||
+              e.keyCode === 73 ||
+              e.keyCode === 83 ||
+              e.keyCode === 80)) ||
+          e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+          (e.altKey && e.keyCode >= 112 && e.keyCode <= 123)
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.addEventListener("copy", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("paste", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      const images = document.getElementsByTagName("img");
+      for (let image of images) {
+        image.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+        });
+        image.style.webkitUserDrag = "none";
+        image.style.webkitUserSelect = "none";
+        image.style.mozUserSelect = "none";
+        image.style.msUserSelect = "none";
+        image.style.userSelect = "none";
+      }
+
+      const style = document.createElement("style");
+      style.textContent = `
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  img {
+    pointer-events: none;
+  }
+`;
+      document.head.appendChild(style);
+    }
+
+    document.addEventListener("DOMContentLoaded", protectContent);
   </script>
 </body>
 </html>
