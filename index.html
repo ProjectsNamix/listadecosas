@@ -140,6 +140,7 @@
       border-radius: 10px;
       height: 10px;
       margin-top: 10px;
+      margin-bottom: 15px;
       overflow: hidden;
     }
     
@@ -148,6 +149,13 @@
       background: linear-gradient(45deg, #007bff, #00e1ff);
       border-radius: 10px;
       transition: width 0.3s ease;
+    }
+    
+    .category-stats {
+      font-size: 0.8rem;
+      text-align: right;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 10px;
     }
     
     @media (max-width: 768px) {
@@ -163,376 +171,343 @@
       <h1>LISTA DE COMPRAS</h1>
     </header>
     
-    <div class="category-container">
-      <div class="category">
-        <h2><i class="fas fa-blender"></i> Cocina y Electrodomésticos</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-cocina"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Horno</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Microondas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Batidora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Refrigeradora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Waflera</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Licuadora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Freidora de aire</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Tostadora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Dispensador de agua</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Balanza normal</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Balanza para postres</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Dispensadores</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Maquina para donas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Olla arrocera</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Jarra hervidora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Lavaseca</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Sanguchera</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Terma para baño</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Extractor</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Cafetera</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Batidora de mano</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Caja china</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Parrilla</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Congeladora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="cocina"><span class="item-text">Refrigeradora chica</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-utensils"></i> Utensilios de Cocina</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-utensilios"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Platos</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Cucharas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Tenedores</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Coladores</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Ollas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Olla a presion</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Sartenes</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Escurridor</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Cuchillos</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Cucharones</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Tazas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Dulceras</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Vasos</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Espátulas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Abrelatas</span></li>          
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Repostero para cocina</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Verdulero</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Termo</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Cooler</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Toopers</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Fuentes</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Quequeras</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Exprimidor de limones</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="utensilios"><span class="item-text">Exprimidor de naranjas</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-couch"></i> Muebles</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-muebles"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Cama</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Mesa</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">2 Escritorios</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">2 Closets</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Vanity</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Sillones</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Comedor</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Mesa de centro</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Zapatera</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Velador</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Sillas gamer</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="muebles"><span class="item-text">Mueble para tv</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-bed"></i> Ropa de Hogar</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-ropa-hogar"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Colchón</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Frazadas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Sábanas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Almohadas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Funda para almohada</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Cortinas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Manteles</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Toallas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="ropa-hogar"><span class="item-text">Cesto de ropa</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-tv"></i> Electrónica</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-electronica"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Televisores de 75"</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Parlante</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Proyector portátil</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Teléfono fijo</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Set de accesorios de cómputo</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Tira LED</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Cargadores portátiles</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">UPS</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Foco recargable</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Impresora</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="electronica"><span class="item-text">Ventilador</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-broom"></i> Limpieza y Organización</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-limpieza"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Escoba</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Recogedor</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Trapeador</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Aspiradora inteligente</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Organizador para cajones</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Cajas para almacenamiento</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Ganchos</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="limpieza"><span class="item-text">Repostero para baño</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-tshirt"></i> Artículos Personales</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-personal"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Ropa</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Zapatos</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Ropa interior y medias</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Maletas y mochilas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Colonias</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Plancha de cabello</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Secadora de cabello</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="personal"><span class="item-text">Bicicleta</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-paw"></i> Mascotas</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-mascotas"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Plato para perro</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Toallas para perros</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Casa para perros</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Ropa y zapatos para perros</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Correas a elección</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Máquina para cortar pelo para perros</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="mascotas"><span class="item-text">Costal de comida para perros</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-tools"></i> Herramientas y Utilidades</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-herramientas"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Caja de herramientas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Herramientas</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Herramientas para jardín</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Plancha a vapor</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Extensiones</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Adaptadores para enchufe</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="herramientas"><span class="item-text">Encendedor recargable</span></li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <h2><i class="fas fa-paint-brush"></i> Decoración</h2>
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-decoracion"></div>
-        </div>
-        <ul>
-          <li><input type="checkbox" class="checkbox" data-category="decoracion"><span class="item-text">Lámpara</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="decoracion"><span class="item-text">Espejo grande</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="decoracion"><span class="item-text">Reloj</span></li>
-          <li><input type="checkbox" class="checkbox" data-category="decoracion"><span class="item-text">Despertador</span></li>
-        </ul>
-      </div>
+    <div class="category-container" id="category-container">
     </div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const categories = [
-        "cocina",
-        "utensilios",
-        "muebles",
-        "ropa-hogar",
-        "electronica",
-        "limpieza",
-        "personal",
-        "mascotas",
-        "herramientas",
-        "decoracion",
+      const categoriesData = [
+        {
+          id: "cocina",
+          name: "Cocina y Electrodomésticos",
+          icon: "fas fa-blender",
+          items: [
+            "Horno", "Microondas", "Batidora", "Refrigeradora", "Waflera", 
+            "Licuadora", "Freidora de aire", "Tostadora", "Dispensador de agua", 
+            "Balanza normal", "Balanza para postres", "Dispensadores", 
+            "Maquina para donas", "Olla arrocera", "Jarra hervidora", 
+            "Lavaseca", "Sanguchera", "Terma para baño", "Extractor", 
+            "Cafetera", "Batidora de mano", "Caja china", "Parrilla", 
+            "Congeladora", "Refrigeradora chica"
+          ]
+        },
+        {
+          id: "utensilios",
+          name: "Utensilios de Cocina",
+          icon: "fas fa-utensils",
+          items: [
+            "Platos", "Cucharas", "Tenedores", "Coladores", "Ollas", 
+            "Olla a presion", "Sartenes", "Escurridor", "Cuchillos", 
+            "Cucharones", "Tazas", "Dulceras", "Vasos", "Espátulas", 
+            "Abrelatas", "Repostero para cocina", "Verdulero", "Termo", 
+            "Cooler", "Toopers", "Fuentes", "Quequeras", 
+            "Exprimidor de limones", "Exprimidor de naranjas"
+          ]
+        },
+        {
+          id: "muebles",
+          name: "Muebles",
+          icon: "fas fa-couch",
+          items: [
+            "Cama", "Mesa", "2 Escritorios", "2 Closets", "Vanity", 
+            "Sillones", "Comedor", "Mesa de centro", "Zapatera", 
+            "Velador", "Sillas gamer", "Mueble para tv"
+          ]
+        },
+        {
+          id: "ropa-hogar",
+          name: "Ropa de Hogar",
+          icon: "fas fa-bed",
+          items: [
+            "Colchón", "Frazadas", "Sábanas", "Almohadas", 
+            "Funda para almohada", "Cortinas", "Manteles", 
+            "Toallas", "Cesto de ropa"
+          ]
+        },
+        {
+          id: "electronica",
+          name: "Electrónica",
+          icon: "fas fa-tv",
+          items: [
+            "Televisores de 75\"", "Parlante", "Proyector portátil", 
+            "Teléfono fijo", "Set de accesorios de cómputo", 
+            "Tira LED", "Cargadores portátiles", "UPS", 
+            "Foco recargable", "Impresora", "Ventilador"
+          ]
+        },
+        {
+          id: "limpieza",
+          name: "Limpieza y Organización",
+          icon: "fas fa-broom",
+          items: [
+            "Escoba", "Recogedor", "Trapeador", "Aspiradora inteligente", 
+            "Organizador para cajones", "Cajas para almacenamiento", 
+            "Ganchos", "Repostero para baño"
+          ]
+        },
+        {
+          id: "personal",
+          name: "Artículos Personales",
+          icon: "fas fa-tshirt",
+          items: [
+            "Ropa", "Zapatos", "Ropa interior y medias", 
+            "Maletas y mochilas", "Colonias", "Plancha de cabello", 
+            "Secadora de cabello", "Bicicleta"
+          ]
+        },
+        {
+          id: "mascotas",
+          name: "Mascotas",
+          icon: "fas fa-paw",
+          items: [
+            "Plato para perro", "Toallas para perros", "Casa para perros", 
+            "Ropa y zapatos para perros", "Correas a elección", 
+            "Máquina para cortar pelo para perros", "Costal de comida para perros"
+          ]
+        },
+        {
+          id: "herramientas",
+          name: "Herramientas y Utilidades",
+          icon: "fas fa-tools",
+          items: [
+            "Caja de herramientas", "Herramientas", "Herramientas para jardín", 
+            "Plancha a vapor", "Extensiones", "Adaptadores para enchufe", 
+            "Encendedor recargable"
+          ]
+        },
+        {
+          id: "decoracion",
+          name: "Decoración",
+          icon: "fas fa-paint-brush",
+          items: [
+            "Lámpara", "Espejo grande", "Reloj", "Despertador"
+          ]
+        }
       ];
 
-      function loadCheckedItems() {
-        categories.forEach((category) => {
-          const savedItems = JSON.parse(
-            localStorage.getItem("checkedItems-" + category) || "[]"
-          );
-          const checkboxes = document.querySelectorAll(
-            `.checkbox[data-category="${category}"]`
-          );
-
-          checkboxes.forEach((checkbox, index) => {
-            if (savedItems.includes(index)) {
-              checkbox.checked = true;
-              checkbox.parentElement.classList.add("checked");
+      const appState = {
+        categories: {},
+        init() {
+          categoriesData.forEach(category => {
+            this.categories[category.id] = {
+              items: category.items.map(() => false)
+            };
+          });
+          
+          this.loadFromStorage();
+        },
+        loadFromStorage() {
+          Object.keys(this.categories).forEach(categoryId => {
+            const savedItems = JSON.parse(
+              localStorage.getItem(`checkedItems-${categoryId}`) || "[]"
+            );
+            
+            savedItems.forEach(index => {
+              if (index < this.categories[categoryId].items.length) {
+                this.categories[categoryId].items[index] = true;
+              }
+            });
+          });
+        },
+        saveToStorage() {
+          Object.keys(this.categories).forEach(categoryId => {
+            const checkedIndexes = this.categories[categoryId].items
+              .map((isChecked, index) => isChecked ? index : null)
+              .filter(index => index !== null);
+            
+            localStorage.setItem(
+              `checkedItems-${categoryId}`,
+              JSON.stringify(checkedIndexes)
+            );
+          });
+        },
+        toggleItem(categoryId, index) {
+          if (this.categories[categoryId] && 
+              index < this.categories[categoryId].items.length) {
+            this.categories[categoryId].items[index] = !this.categories[categoryId].items[index];
+            this.saveToStorage();
+            return true;
+          }
+          return false;
+        },
+        getStats(categoryId) {
+          if (!this.categories[categoryId]) return { checked: 0, total: 0, percent: 0 };
+          
+          const items = this.categories[categoryId].items;
+          const checked = items.filter(item => item).length;
+          const total = items.length;
+          const percent = total > 0 ? (checked / total) * 100 : 0;
+          
+          return { checked, total, percent };
+        }
+      };
+    
+      const uiController = {
+        init() {
+          this.renderCategories();
+          this.setupEventListeners();
+        },
+        renderCategories() {
+          const container = document.getElementById('category-container');
+          container.innerHTML = '';
+          
+          categoriesData.forEach(category => {
+            const categoryEl = this.createCategoryElement(category);
+            container.appendChild(categoryEl);
+          });
+        },
+        createCategoryElement(category) {
+          const { id, name, icon, items } = category;
+          const stats = appState.getStats(id);
+          
+          const categoryEl = document.createElement('div');
+          categoryEl.className = 'category';
+          categoryEl.setAttribute('data-category', id);
+          
+          const headerEl = document.createElement('h2');
+          headerEl.innerHTML = `<i class="${icon}"></i> ${name}`;
+          
+          const statsEl = document.createElement('div');
+          statsEl.className = 'category-stats';
+          statsEl.textContent = `${stats.checked}/${stats.total} completados`;
+          
+          const progressContainerEl = document.createElement('div');
+          progressContainerEl.className = 'progress-container';
+          
+          const progressBarEl = document.createElement('div');
+          progressBarEl.className = 'progress-bar';
+          progressBarEl.id = `progress-${id}`;
+          progressBarEl.style.width = `${stats.percent}%`;
+          
+          progressContainerEl.appendChild(progressBarEl);
+          
+          const listEl = document.createElement('ul');
+          
+          items.forEach((item, index) => {
+            const isChecked = appState.categories[id].items[index];
+            
+            const listItem = document.createElement('li');
+            listItem.className = isChecked ? 'checked' : '';
+            listItem.setAttribute('data-index', index);
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'checkbox';
+            checkbox.checked = isChecked;
+            
+            const itemText = document.createElement('span');
+            itemText.className = 'item-text';
+            itemText.textContent = item;
+            
+            listItem.appendChild(checkbox);
+            listItem.appendChild(itemText);
+            listEl.appendChild(listItem);
+          });
+          
+          categoryEl.appendChild(headerEl);
+          categoryEl.appendChild(statsEl);
+          categoryEl.appendChild(progressContainerEl);
+          categoryEl.appendChild(listEl);
+          
+          return categoryEl;
+        },
+        setupEventListeners() {
+          document.getElementById('category-container').addEventListener('click', (e) => {
+            const listItem = e.target.closest('li');
+            
+            if (!listItem) return;
+            
+            const categoryEl = listItem.closest('.category');
+            const categoryId = categoryEl.getAttribute('data-category');
+            const itemIndex = parseInt(listItem.getAttribute('data-index'), 10);
+            
+            const checkbox = listItem.querySelector('.checkbox');
+            checkbox.checked = !checkbox.checked;
+            
+            if (appState.toggleItem(categoryId, itemIndex)) {
+              listItem.classList.toggle('checked');
+              this.updateCategoryStats(categoryEl, categoryId);
             }
           });
+        },
+        updateCategoryStats(categoryEl, categoryId) {
+          const stats = appState.getStats(categoryId);
+          
+          const statsEl = categoryEl.querySelector('.category-stats');
+          statsEl.textContent = `${stats.checked}/${stats.total} completados`;
+          
+          const progressBarEl = categoryEl.querySelector('.progress-bar');
+          progressBarEl.style.width = `${stats.percent}%`;
+        }
+      };
 
-          updateProgress(category);
-        });
+      function initApp() {
+        appState.init();
+        uiController.init();
+        setupProtection();
       }
 
-      function saveCheckedItems(category) {
-        const checkboxes = document.querySelectorAll(
-          `.checkbox[data-category="${category}"]`
-        );
-        const checkedIndexes = [];
-
-        checkboxes.forEach((checkbox, index) => {
-          if (checkbox.checked) {
-            checkedIndexes.push(index);
-          }
-        });
-
-        localStorage.setItem(
-          "checkedItems-" + category,
-          JSON.stringify(checkedIndexes)
-        );
-      }
-
-      function updateProgress(category) {
-        const checkboxes = document.querySelectorAll(
-          `.checkbox[data-category="${category}"]`
-        );
-        const totalItems = checkboxes.length;
-        let checkedItems = 0;
-
-        checkboxes.forEach((checkbox) => {
-          if (checkbox.checked) {
-            checkedItems++;
-          }
-        });
-
-        const progressPercent =
-          totalItems > 0 ? (checkedItems / totalItems) * 100 : 0;
-        document.getElementById(`progress-${category}`).style.width =
-          progressPercent + "%";
-      }
-
-      document.querySelectorAll(".checkbox").forEach((checkbox) => {
-        checkbox.addEventListener("change", function () {
-          const category = this.dataset.category;
-          const listItem = this.parentElement;
-
-          if (this.checked) {
-            listItem.classList.add("checked");
-          } else {
-            listItem.classList.remove("checked");
-          }
-
-          saveCheckedItems(category);
-          updateProgress(category);
-        });
-      });
-
-      loadCheckedItems();
-    });
-
-    function protectContent() {
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      document.addEventListener("selectstart", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      document.addEventListener("dragstart", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (
-          (e.ctrlKey &&
-            (e.keyCode === 67 ||
-              e.keyCode === 85 ||
-              e.keyCode === 73 ||
-              e.keyCode === 83 ||
-              e.keyCode === 80)) ||
-          e.keyCode === 123 ||
-          (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
-          (e.altKey && e.keyCode >= 112 && e.keyCode <= 123)
-        ) {
+      function setupProtection() {
+        document.addEventListener("contextmenu", function (e) {
           e.preventDefault();
           return false;
-        }
-      });
-
-      document.addEventListener("copy", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      document.addEventListener("paste", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      const images = document.getElementsByTagName("img");
-      for (let image of images) {
-        image.addEventListener("mousedown", function (e) {
-          e.preventDefault();
         });
-        image.style.webkitUserDrag = "none";
-        image.style.webkitUserSelect = "none";
-        image.style.mozUserSelect = "none";
-        image.style.msUserSelect = "none";
-        image.style.userSelect = "none";
+
+        document.addEventListener("selectstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        document.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (
+            (e.ctrlKey &&
+              (e.keyCode === 67 ||
+                e.keyCode === 85 ||
+                e.keyCode === 73 ||
+                e.keyCode === 83 ||
+                e.keyCode === 80)) ||
+            e.keyCode === 123 ||
+            (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+            (e.altKey && e.keyCode >= 112 && e.keyCode <= 123)
+          ) {
+            e.preventDefault();
+            return false;
+          }
+        });
+
+        document.addEventListener("copy", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        document.addEventListener("paste", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        const style = document.createElement("style");
+        style.textContent = `
+          * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          img {
+            pointer-events: none;
+          }
+        `;
+        document.head.appendChild(style);
       }
 
-      const style = document.createElement("style");
-      style.textContent = `
-  * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  img {
-    pointer-events: none;
-  }
-`;
-      document.head.appendChild(style);
-    }
-
-    document.addEventListener("DOMContentLoaded", protectContent);
+      initApp();
+    });
   </script>
 </body>
 </html>
