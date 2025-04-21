@@ -49,9 +49,11 @@
       }
 
       .category-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
+        justify-content: space-between;
+        align-items: flex-start;
       }
 
       .category {
@@ -62,6 +64,11 @@
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: calc(33.333% - 1.5rem);
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        height: auto;
       }
 
       .category:hover {
@@ -161,9 +168,15 @@
         margin-bottom: 10px;
       }
 
+      @media (max-width: 1200px) {
+        .category {
+          width: calc(50% - 1rem);
+        }
+      }
+
       @media (max-width: 768px) {
-        .category-container {
-          grid-template-columns: 1fr;
+        .category {
+          width: 100%;
         }
       }
     </style>
@@ -210,7 +223,7 @@
               "Parrilla",
               "Congeladora",
               "Refrigeradora chica",
-              "tostadora",              
+              "tostadora",
             ],
           },
           {
@@ -256,13 +269,13 @@
               "Embundos",
               "Jarra",
               "Tetera",
-              "Utensilios parrilleros",      
+              "Utensilios parrilleros",
               "Cortdor de piza",
-              "Cuchara pa helado",        
+              "Cuchara pa helado",
               "Molde para cupcake",
               "Afilador",
               "Tijeras",
-              "Cuchillos varios",              
+              "Cuchillos varios",
               "Mantequillero",
               "Panera",
               "Rodillo",
@@ -333,12 +346,11 @@
               "Impresora",
               "Ventilador",
               "Aire acondicionado",
-              "Calefaccion",              
+              "Calefaccion",
               "Laptop inicial Maciel",
               "Laptop potente Maciel",
               "Pc achori",
               "Consola portatil",
-
             ],
           },
           {
@@ -440,7 +452,7 @@
               "Dominó",
               "Tic-Tac-Toe",
               "Tetra Tower",
-              "Scrabble"
+              "Scrabble",
             ],
           },
           {
@@ -611,8 +623,7 @@
                     listItem.classList.toggle("checked");
                     this.updateCategoryStats(categoryEl, categoryId);
                   }
-                }
-                else {
+                } else {
                   const listItem = e.target.closest("li");
 
                   if (!listItem) return;
@@ -714,4 +725,3 @@
     </script>
   </body>
 </html>
-
